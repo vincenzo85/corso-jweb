@@ -35,53 +35,26 @@
           <a class="nav-link" href="#">About</a>
         </li>
       </ul>
+      
+      
+    <span class="navbar-text">
+      Benvenuto <% 
+      
+      
+      %>
+    </span>
+  </div>
       <!--  
       <form class="form-inline" action="controller" method="POST">
       		<input name="username" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
     		<input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
 			<button class="btn btn-outline-info my-2 my-sm-0" type="submit">Log In</button>
       </form> -->
-    </div>
+    
   </nav>
   
   
   <!------ Include the above in your HEAD tag ---------->
-
-<div class="wrapper fadeInDown">
-  <div id="formContent">
-    <!-- Tabs Titles -->
-
-    <!-- Icon -->
-    <div class="fadeIn first">
-  
-   
-     <img src="style/img/user.png" id="icon" alt="User Icon" /> 
-    </div>
-
-    <!-- Login Form -->
-    <form action="login" method="post">
-      
-      <input name="username" type="text" id="login" class="fadeIn second" name="login" placeholder="login">
-      <input name="password" type="text" id="password" class="fadeIn third" name="login" placeholder="password">
-      <input type="submit" class="fadeIn fourth" value="Log In">
-    </form>
-
-
-	<% 
-	
-	String errorMsg = "";
-	errorMsg = request.getAttribute("errorMsg") != null ? (String)request.getAttribute("errorMsg") : "" ;
-		
-	%>
-    <!-- Remind Passowrd -->
-    <div id="formFooter">
-    	<p> <%= errorMsg  %></p>
-      <a class="underlineHover" href="registrati">Forgot your Password now?</a>
-    </div>
-
-  </div>
-</div>
-	
 	
 	</body>
 </html>

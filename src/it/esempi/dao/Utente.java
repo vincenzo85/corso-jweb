@@ -1,7 +1,7 @@
 package it.esempi.dao;
 
 public class Utente {
-	private Long id;
+	private long id;
 	private String username;
 	private String password;
 	public String getUsername() {
@@ -19,8 +19,8 @@ public class Utente {
 	public Long getId() {
 		return id;
 	}
-	public void setId(Long id) {
-		this.id = id;
+	public void setId(long i) {
+		this.id = i;
 	}
 
 	

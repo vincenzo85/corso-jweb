@@ -23,6 +23,7 @@ public class ConfigPropertyLoader {
 	public final String URL = "database.url";
 	public final String USERNAME="database.username";
 	public final String PASSWORD="database.password";
+	public final boolean DEV_MODE=false;
 	
 
 	private Properties prop = new Properties();

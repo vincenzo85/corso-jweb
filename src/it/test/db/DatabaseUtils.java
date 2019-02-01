@@ -13,6 +13,35 @@ public class DatabaseUtils {
 	private static ConfigPropertyLoader cfg =null;
 	private static DatabaseUtils _instance = null;
 	
+	
+	
+	//se utilizziamo quella classe per contenere dei dati particolari 
+	
+	/*
+	 * Se devo fare l'inizializzazione del driver una volta sola non possiamo fare n volte l'instanza della classe
+	 * 
+	 * in jpa c'è un momento che prevede l'avvio del framework 
+	 * 
+	 * in cui accende un motore interno
+	 * 
+	 * vengono create delle classe per fornire connessioni all'applicazione
+	 * 
+	 * se noi esponiamo quella classe a un dao e la chiudiamo quella automaticamente sega tutte le connessioni vero il dv
+	 * 
+	 * costruttore privato .... che crea la classe e la tiene in caldo.
+	 * 
+	 * essendo una variabile privata e accessibile ? no
+	 * 
+	 * espongo solo i piccoli metodi a tutti i dai.
+	 * 
+	 * se lo instanzio n volte ... resetto le connessioni, quindi  lo faccio una volta sola....
+	 * 
+	 * 
+	 * 
+	 * */
+	
+	
+	
 	private DatabaseUtils() {};
 	public static DatabaseUtils getInstance() {
 		if(_instance == null) {
@@ -39,13 +68,14 @@ public class DatabaseUtils {
 		
 	}
 	
-	public static Connection openMySqlConnection () throws SQLException {
+	public Connection openMySqlConnection () throws SQLException {
 		
 		// sono a basso livello quindi faccio il throws
+		if(cfg.DEV_MODE) {
 		System.out.println(cfg.readProperty(cfg.URL));
 		System.out.println(cfg.readProperty(cfg.USERNAME));
 		System.out.println(cfg.readProperty(cfg.PASSWORD));
-		
+		}
 		return DriverManager.getConnection(cfg.readProperty(cfg.URL), cfg.readProperty(cfg.USERNAME), cfg.readProperty(cfg.PASSWORD));
 		
 		
