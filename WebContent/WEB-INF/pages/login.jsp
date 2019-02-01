@@ -62,7 +62,7 @@
     <form action="login" method="post">
       
       <input name="username" type="text" id="login" class="fadeIn second" name="login" placeholder="login">
-      <input name="password" type="text" id="password" class="fadeIn third" name="login" placeholder="password">
+      <input name="password" type="password" id="password" class="fadeIn third" name="login" placeholder="password">
       <input type="submit" class="fadeIn fourth" value="Log In">
     </form>
 
