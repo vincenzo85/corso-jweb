@@ -23,6 +23,15 @@ public class UserDao {
 				
 				// 2 apro la connessione;
 				
+//				Crearsi la tabella utenti
+//				CREATE TABLE `corso_java`.`utenti` (
+//				
+//						  `id` INT NOT NULL AUTO_INCREMENT,
+//						  `username` VARCHAR(45) NULL,
+//						  `password` VARCHAR(45) NULL,
+//						  PRIMARY KEY (`id`),
+//						  UNIQUE INDEX `username_UNIQUE` (`username` ASC) VISIBLE);
+				
 				try {
 					connection = DatabaseUtils.getInstance().openMySqlConnection();     
 					
