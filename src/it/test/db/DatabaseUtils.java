@@ -4,16 +4,20 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-import it.esempi.db.gui.ConfigPropertyLoader;
+
+
+import it.esempi.dao.ConfigDb;
+
+
 
 public class DatabaseUtils {
 	
 	/* ho una variabile statica in memoria al primo avvio del db */
 	
-	private static ConfigPropertyLoader cfg =null;
+	//private static ConfigPropertyLoader cfg =null;
 	private static DatabaseUtils _instance = null;
 	
-	
+	private ConfigDb cfb=null;
 	
 	//se utilizziamo quella classe per contenere dei dati particolari 
 	
@@ -40,7 +44,10 @@ public class DatabaseUtils {
 	 * 
 	 * */
 	
+	public void configDb(ConfigDb cdb) {
+		this.cfb = cdb;
 	
+	}
 	
 	private DatabaseUtils() {};
 	public static DatabaseUtils getInstance() {
@@ -50,12 +57,15 @@ public class DatabaseUtils {
 		return _instance;
 	}
 	
-	static {
+	
+	private void initMysqlDriver() {
+	
 		try {
 			
-			cfg = new ConfigPropertyLoader();
+//			cfg = new ConfigPropertyLoader();
 //			System.out.println(cfg.readProperty(cfg.DRIVER));
-			Class.forName(cfg.readProperty(cfg.DRIVER));
+			Class.forName(this.cfb.getMySqlDriver());
+			
 			
 			
 		} catch ( Exception e) {
@@ -67,16 +77,15 @@ public class DatabaseUtils {
 		}
 		
 	}
+		
+	
 	
 	public Connection openMySqlConnection () throws SQLException {
 		
 		// sono a basso livello quindi faccio il throws
-		if(cfg.DEV_MODE) {
-		System.out.println(cfg.readProperty(cfg.URL));
-		System.out.println(cfg.readProperty(cfg.USERNAME));
-		System.out.println(cfg.readProperty(cfg.PASSWORD));
-		}
-		return DriverManager.getConnection(cfg.readProperty(cfg.URL), cfg.readProperty(cfg.USERNAME), cfg.readProperty(cfg.PASSWORD));
+		initMysqlDriver();
+		
+		return DriverManager.getConnection( this.cfb.getDatabaseUrl(), this.cfb.getDatabaseUsername(), this.cfb.getDatabasePassword());
 		
 		
 	};

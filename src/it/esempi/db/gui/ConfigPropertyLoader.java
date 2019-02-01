@@ -10,15 +10,22 @@
 package it.esempi.db.gui;
 
 import java.io.FileInputStream;
+import java.io.InputStream;
 import java.util.Properties;
+
+import javax.servlet.http.HttpServlet;
 
 /**
  * @author robgion
  *
  * Classe per il caricamento di risorse esterne tramite file *.properties.
  */
-public class ConfigPropertyLoader {
+public class ConfigPropertyLoader  extends HttpServlet {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public final String DRIVER ="database.driver";
 	public final String URL = "database.url";
 	public final String USERNAME="database.username";
@@ -38,8 +45,8 @@ public class ConfigPropertyLoader {
 		FileInputStream fis = null;
 		try {
 			
-			fis = new FileInputStream("META-INF/config.properties");
-			prop.load(fis);
+			InputStream input =  getServletContext().getResourceAsStream("/WEB-INF/configs.properties");
+			prop.load(input);
 			
 		} catch (Exception e) {
 			e.printStackTrace();

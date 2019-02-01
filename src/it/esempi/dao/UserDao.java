@@ -14,7 +14,7 @@ import it.test.db.DatabaseUtils;
 public class UserDao {
 	
 	
-	public Utente findByUsernamePassword(String username, String password) {
+	public Utente findByUsernamePassword(UserCredetial uc) {
 		
 			
 			Utente u = null;
@@ -37,7 +37,7 @@ public class UserDao {
 					
 					String sql = "select id, username, password from utenti where username = ?";
 					PreparedStatement stmt = connection.prepareStatement(sql);
-					stmt.setString(1, username);
+					stmt.setString(1, uc.getUsername());
 					ResultSet rs = stmt.executeQuery();
 					
 					// while è inutile if è meglio ... c'è ne solo uno

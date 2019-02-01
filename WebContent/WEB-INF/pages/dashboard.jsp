@@ -36,12 +36,14 @@
         </li>
       </ul>
       
-      
+      <% 
+	
+	String username = "";
+	username = request.getAttribute("user") != null ? (String)request.getAttribute("user") : "" ;
+		
+	%>
     <span class="navbar-text">
-      Benvenuto <% 
-      
-      
-      %>
+      Benvenuto <%= username %>
     </span>
   </div>
       <!--  
