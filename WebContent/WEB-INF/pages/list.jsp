@@ -1,3 +1,4 @@
+<%@ page import=" java.util.ArrayList, it.esempi.dao.Autore" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -71,23 +72,28 @@ for (int i = 0; i < 10; i++) {
 <table class="table table-striped table-dark">
   <thead>
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
+      <th scope="col">ID</th>
+      <th scope="col">Titolo</th>
+      <th scope="col">Nome</th>
+      <th scope="col">Cognome</th>
     </tr>
   </thead>
   <tbody>
 
 <% 
-for (int i = 0; i < 10; i++) { 
+
+
+
+ArrayList<Autore> list = (ArrayList<Autore>) request.getAttribute("listaAutori");
+
+for (Autore au: list) { 
 %>
 
     <tr>
-      <th scope="row"><%=i %></th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
+      <th scope="row"><%=au.getId() %></th>
+      <td><%=au.getTitolo() %></td>
+      <td><%=au.getNome() %></td>
+      <td><%=au.getCognome() %></td>
     </tr>
 <%
 }
