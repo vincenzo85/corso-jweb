@@ -63,6 +63,49 @@ for (int i = 0; i < 10; i++) {
 
 </ul>
 	
+
+<!--  esempio tabella  -->
+<div class="container">
+ <div class="row justify-content-md-center">
+    <div class="col col-md-8">
+<table class="table table-striped table-dark">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+
+<% 
+for (int i = 0; i < 10; i++) { 
+%>
+
+    <tr>
+      <th scope="row"><%=i %></th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+<%
+}
+%>
+
+
+
+
+  </tbody>
+</table>
+
+
+</div>
+</div>
+</div>
+
+
+
 	
 	</body>
 </html>
