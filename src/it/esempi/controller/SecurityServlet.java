@@ -19,6 +19,8 @@ public class SecurityServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        // le variabili di instanza qui servono per tutte quelle informazioni che fanno parte di tutti gli utenti (globali) come ad esempio un contantore
 	   // mai mettere qui variabili del singolo utenti ci potrebbero essere problemi di autenticazione
+	
+	// allo startup di questa applicazione ... tomcat chiama sempre il metodo service (in questo caso quello della classe padre)
     /**
      * @see HttpServlet#HttpServlet()
      */
