@@ -87,8 +87,12 @@ public class SecurityServlet extends HttpServlet {
 		
 		HttpSession session = request.getSession(false);
 		if(session != null) {
+			
+			session.removeAttribute("loggedUser");
+			//sono sicuro che non ho dati dell'utente in giro.
 			session.invalidate();
 		}
+		
 		
 			// faccio la log out // vado sul get perchè sono sicuro che dalla pagine login tramite get ottengo solo questa servlet
 		getServletContext().getRequestDispatcher("/WEB-INF/pages/login.jsp").forward(request, response);

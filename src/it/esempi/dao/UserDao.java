@@ -49,8 +49,8 @@ public class UserDao {
 						
 						u.setId(rs.getLong("id"));
 						u.setUsername(rs.getString("username"));
-						u.setPassword(rs.getString("password"));
-						
+						//u.setPassword(rs.getString("password"));
+						//la password mi serviva quando facevo l'auth helper ora non mi serve e non la mando in sessione
 						
 						
 					}

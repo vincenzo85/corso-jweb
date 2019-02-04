@@ -3,7 +3,6 @@
   <display-name>corso-jweb</display-name>
   <servlet>
     <description>Servlet per la login</description>
-    <!--  questa servlet si avvia allo startup per creare tramite il pattern singlenton l'istanza della classe database utilis -->
     <servlet-name>SecurityServlet</servlet-name>
     <servlet-class>it.esempi.controller.SecurityServlet</servlet-class>
   </servlet>
@@ -36,10 +35,8 @@
       <param-name>DATABASE.PASSWORD</param-name>
       <param-value>root</param-value>
     </init-param>
-    <!--  qui metto 1 perchè è la prima che chiamo -->
     <load-on-startup>1</load-on-startup>
   </servlet>
-  <!--  qui mettiamo un filtro per rendere possibile di fare log in / verificare la sessione gestire le lingue (i18n) -->
   <servlet-mapping>
     <servlet-name>SecurityServlet</servlet-name>
     <url-pattern>/login</url-pattern>
