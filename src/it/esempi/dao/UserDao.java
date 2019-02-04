@@ -35,9 +35,10 @@ public class UserDao {
 				try {
 					connection = DatabaseUtils.getInstance().openMySqlConnection();     
 					
-					String sql = "select id, username, password from utenti where username = ?";
+					String sql = "select id, username, password from utenti where username = ? and where password = ?";
 					PreparedStatement stmt = connection.prepareStatement(sql);
 					stmt.setString(1, uc.getUsername());
+					stmt.setString(2, uc.getPassword());
 					ResultSet rs = stmt.executeQuery();
 					
 					// while è inutile if è meglio ... c'è ne solo uno

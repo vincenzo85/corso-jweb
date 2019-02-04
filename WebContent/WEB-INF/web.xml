@@ -39,6 +39,7 @@
     <!--  qui metto 1 perchè è la prima che chiamo -->
     <load-on-startup>1</load-on-startup>
   </servlet>
+  <!--  qui mettiamo un filtro per rendere possibile di fare log in / verificare la sessione gestire le lingue (i18n) -->
   <servlet-mapping>
     <servlet-name>SecurityServlet</servlet-name>
     <url-pattern>/login</url-pattern>

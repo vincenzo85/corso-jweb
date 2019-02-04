@@ -44,8 +44,8 @@ public class SecurityServlet extends HttpServlet {
 	
 		
 		
-		if (User != null && AutenticationHelper.isAllowed(uc, User)) {
-			
+//		if (User != null && AutenticationHelper.isAllowed(uc, User)) {
+		if (User != null ) {
 			
 				//response.sendRedirect("logged.jsp");
 			// TODO: vado verso la dashboard
