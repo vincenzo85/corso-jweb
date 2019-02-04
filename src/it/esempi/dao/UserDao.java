@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import it.esempi.model.UserSearch;
 import it.test.db.DatabaseUtils;
 
 
@@ -107,6 +108,45 @@ public class UserDao {
 		
 	
 		
+	}
+	
+	public List<Utente> searchByUsernamePassword(UserSearch uc){
+		
+		Utente u = null;
+		List<Utente> lu = null;
+		Connection connection = null;
+		
+		try {
+			connection = DatabaseUtils.getInstance().openMySqlConnection();     
+			
+			String sql = "select id, username, password from utenti where username like ?"; 
+	// or password like '%?%'";
+			PreparedStatement stmt = connection.prepareStatement(sql);
+			
+			stmt.setString(1, "%"+uc.getSearch()+"%");
+		//	stmt.setString(2, uc.getSearch());
+			
+			ResultSet rs = stmt.executeQuery();
+			
+			// while è inutile if è meglio ... c'è ne solo uno
+			lu = new ArrayList<Utente>();
+			while(rs.next()) {
+				u = new Utente();
+				
+				
+				u.setId(rs.getLong("id"));
+				u.setUsername(rs.getString("username"));
+				u.setPassword(rs.getString("password"));
+				//la password in teoria non dovrei inviarla cmq è solo un esempio
+				lu.add(u);
+				}
+		
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return lu;
 	}
 	
 

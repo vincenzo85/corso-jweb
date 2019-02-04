@@ -2,7 +2,16 @@
 /* BASIC */
 
 html {
-  background-color: #56baed;
+
+}
+
+.container-filter{
+    margin-top:30px;
+}
+
+.filter-col{
+    padding-left:10px;
+    padding-right:10px;
 }
 
 body {

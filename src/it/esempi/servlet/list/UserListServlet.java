@@ -10,9 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import it.esempi.dao.Autore;
+
 import it.esempi.dao.UserDao;
 import it.esempi.dao.Utente;
+import it.esempi.model.UserSearch;
 
 /**
  * Servlet implementation class UserListServlet
@@ -41,6 +42,25 @@ public class UserListServlet extends HttpServlet {
 		getServletContext().getRequestDispatcher("/WEB-INF/pages/users/userlist.jsp").forward(request, response);
 		
 		}
+	}
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		UserSearch us = new UserSearch();
+		us.setSearch(request.getParameter("search"));
+	
+		
+		
+		List<Utente> ul = new ArrayList<Utente>();
+		UserDao Udao = new UserDao();
+		ul  = Udao.searchByUsernamePassword(us);
+		request.setAttribute("userSearch", us);
+		if(ul != null) {
+			request.setAttribute("userList", ul);
+			
+			getServletContext().getRequestDispatcher("/WEB-INF/pages/users/userlist.jsp").forward(request, response);
+			
+			}
+		
 	}
 
 }
