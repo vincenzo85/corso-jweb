@@ -25,8 +25,13 @@
 	if( userList != null){ 
 	
 %>
+<!--  esempio tabella  -->
+<div class="container">
+<div class="row justify-content-md-center">
+<div class="col col-md-8">
+	<table class="table table-striped table-dark">
 
-	<table>
+
 	<!--  se ho utenti stampo i dati della lista -->
 	<tr>
 		
@@ -50,7 +55,9 @@
 	
 	</table>
 
-
+</div>
+</div>
+</div>
 
 
 
