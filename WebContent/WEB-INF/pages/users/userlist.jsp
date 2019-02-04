@@ -28,6 +28,7 @@
 	
 	</tr>
 	
+	<tr>
 	
 			<%  for(Utente u: userList) { %>
 	
@@ -36,6 +37,8 @@
 				<td> <%=u.getPassword() %></td>
 	
 			<%	} %>
+	
+	</tr>
 	</table>
 
 
