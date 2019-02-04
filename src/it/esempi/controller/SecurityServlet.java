@@ -6,6 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import it.esempi.dao.UserCredetial;
 import it.esempi.dao.UserDao;
@@ -46,6 +47,14 @@ public class SecurityServlet extends HttpServlet {
 		
 //		if (User != null && AutenticationHelper.isAllowed(uc, User)) {
 		if (User != null ) {
+			// già nella home al primo get, mi ha settatto il cookie del jsessionid
+			
+			HttpSession session = request.getSession(true);
+			// o mi ridai quello che hai o me ne crei uno nuovo
+			
+			session.setAttribute("loggedUser", User);
+			// mandagli l'oggetto User "senza la password!!!" se vedi UserDao riga 52 è commentata;
+			
 			
 				//response.sendRedirect("logged.jsp");
 			// TODO: vado verso la dashboard
@@ -75,6 +84,15 @@ public class SecurityServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		// qui metterò l'implementazione del log out
+		
+		HttpSession session = request.getSession(false);
+		if(session != null) {
+			session.invalidate();
+		}
+		
+			// faccio la log out // vado sul get perchè sono sicuro che dalla pagine login tramite get ottengo solo questa servlet
+		getServletContext().getRequestDispatcher("/WEB-INF/pages/login.jsp").forward(request, response);
+		
 	}
 
 }
