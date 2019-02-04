@@ -2,6 +2,7 @@ package it.esempi.servlet.list;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import it.esempi.dao.Autore;
+import it.esempi.dao.UserDao;
+import it.esempi.dao.Utente;
 
 /**
  * Servlet implementation class UserListServlet
@@ -31,28 +34,13 @@ public class UserListServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		UserDao ud = new UserDao();
+		List<Utente> userList = ud.findAll();
+		if(userList != null) {
+		request.setAttribute("userList", userList);
+		getServletContext().getRequestDispatcher("/WEB-INF/pages/users/userlist.jsp").forward(request, response);
 		
-		ArrayList<Autore> listaAutori = new ArrayList<Autore>();
-		Autore au1 =new Autore();
-		Autore au2 =new Autore();
-		Autore au3 =new Autore();
-		au1.setAutore(1, "Massimo", "Boldi", "Comico");
-		au2.setAutore(2, "Gabriele", "Cirilli", "Comico");
-		au3.setAutore(3, "Cluadio", "Bisio", "Comico");
-		listaAutori.add(au1);
-		listaAutori.add(au2);
-		listaAutori.add(au3);
-		
-		
-		
-		
-		
-		
-		String forwardPath ="/WEB-INF/pages/list.jsp";
-		
-		request.setAttribute("listaAutori", listaAutori );
-		getServletContext().getRequestDispatcher(forwardPath).forward(request, response);
-		
+		}
 	}
 
 }

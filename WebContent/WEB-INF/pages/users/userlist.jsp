@@ -5,8 +5,17 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+
+		<LINK REL="StyleSheet" HREF="style/css/style.css" TYPE="text/css"> 
+		
+		<LINK REL="StyleSheet" HREF="style/css/bootstrap.min.css" TYPE="text/css"> 
+		<script src="style/js/bootstrap.min.js" ></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<title>Lista utenti</title>
 </head>
 <body>
 
@@ -23,22 +32,22 @@
 		
 		<th> ID </th>
 		<th> Nome </th>
-		<th> COgnome </th>
+		<th> Cognome </th>
 		
 	
 	</tr>
 	
-	<tr>
 	
 			<%  for(Utente u: userList) { %>
+	<tr>
 	
 				<td> <%=u.getId() %> </td>
 				<td> <%=u.getUsername() %> </td>
 				<td> <%=u.getPassword() %></td>
 	
+	</tr>
 			<%	} %>
 	
-	</tr>
 	</table>
 
 
