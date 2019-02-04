@@ -17,7 +17,8 @@ import it.esempi.dao.Utente;
 //@WebServlet("/SecurityServlet")
 public class SecurityServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+       // le variabili di instanza qui servono per tutte quelle informazioni che fanno parte di tutti gli utenti (globali) come ad esempio un contantore
+	   // mai mettere qui variabili del singolo utenti ci potrebbero essere problemi di autenticazione
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -71,7 +72,7 @@ public class SecurityServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
+		// qui metterò l'implementazione del log out
 	}
 
 }
