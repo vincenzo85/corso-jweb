@@ -10,7 +10,8 @@ import javax.servlet.http.HttpSession;
 
 import it.esempi.dao.UserCredetial;
 import it.esempi.dao.UserDao;
-import it.esempi.dao.Utente;
+import it.esempi.model.Utente;
+
 
 /**
  * Servlet implementation class SecurityServlet
@@ -41,8 +42,10 @@ public class SecurityServlet extends HttpServlet {
 		
 		String forwardPath =null;
 		UserDao Udao = new UserDao();
-		Utente User  = Udao.findByUsernamePassword(uc);
-	
+		Utente User  = null;
+				
+//		User=		Udao.findByUsernamePassword(uc);
+			
 		
 		
 //		if (User != null && AutenticationHelper.isAllowed(uc, User)) {

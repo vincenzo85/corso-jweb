@@ -29,7 +29,7 @@ public class ConfigServlet extends HttpServlet {
 		
 		super.init();
 		
-		String mySqlDriver = getInitParameter("MYSQL_DRIVER");
+	/*	String mySqlDriver = getInitParameter("MYSQL_DRIVER");
 		String databaseUrl = getInitParameter("DATABASE.URL");
 		String databaseUsername = getInitParameter("DATABASE.USERNAME");
 		String databasePassword = getInitParameter("DATABASE.PASSWORD");
@@ -37,7 +37,9 @@ public class ConfigServlet extends HttpServlet {
 		ConfigDb cdb = new ConfigDb(mySqlDriver, databaseUrl, databaseUsername, databasePassword);
 		
 		DatabaseUtils.getInstance().configDb(cdb);
+	*/
 		
+		DatabaseUtils.getInstance();
 		
 //		/*sto inizializzando la mia servlet*/
 //		  <init-param>

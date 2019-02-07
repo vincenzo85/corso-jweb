@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import it.esempi.dao.Autore;
 import it.esempi.dao.UserCredetial;
 import it.esempi.dao.UserDao;
-import it.esempi.dao.Utente;
+
 import it.esempi.model.UserSearch;
 
 /**
@@ -38,15 +38,13 @@ public class Lista extends HttpServlet {
 		//creo una lista fittizia di autori
 		
 		ArrayList<Autore> listaAutori = new ArrayList<Autore>();
-		Autore au1 =new Autore();
-		Autore au2 =new Autore();
-		Autore au3 =new Autore();
-		au1.setAutore(1, "Massimo", "Boldi", "Comico");
-		au2.setAutore(2, "Gabriele", "Cirilli", "Comico");
-		au3.setAutore(3, "Cluadio", "Bisio", "Comico");
-		listaAutori.add(au1);
-		listaAutori.add(au2);
-		listaAutori.add(au3);
+		
+		
+	 
+	
+	UserDao udall = new UserDao();
+	
+		//listaAutori = udall.findAll();
 		
 		
 		

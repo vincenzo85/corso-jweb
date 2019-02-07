@@ -1,6 +1,6 @@
 <%@page import="it.esempi.model.UserSearch"%>
 <%@page import="it.esempi.controller.UserDetail"%>
-<%@page import="it.esempi.dao.Utente"%>
+<%@page import="it.esempi.model.Utente"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>

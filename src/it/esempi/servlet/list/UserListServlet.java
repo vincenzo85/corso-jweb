@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 
 import it.esempi.dao.UserDao;
-import it.esempi.dao.Utente;
+
 import it.esempi.model.UserSearch;
 
 /**
@@ -36,7 +36,7 @@ public class UserListServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		UserDao ud = new UserDao();
-		List<Utente> userList = ud.findAll();
+		List<it.esempi.model.Utente> userList = ud.findAll();
 		if(userList != null) {
 		request.setAttribute("userList", userList);
 		getServletContext().getRequestDispatcher("/WEB-INF/pages/users/userlist.jsp").forward(request, response);
@@ -45,21 +45,22 @@ public class UserListServlet extends HttpServlet {
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		UserSearch us = new UserSearch();
+	/*	UserSearch us = new UserSearch();
 		us.setSearch(request.getParameter("search"));
 	
 		
 		
-		List<Utente> ul = new ArrayList<Utente>();
+		List<it.esempi.model.Utente> ul = new ArrayList<it.esempi.model.Utente>();
 		UserDao Udao = new UserDao();
-		ul  = Udao.searchByUsernamePassword(us);
+		ul  = 
+		
 		request.setAttribute("userSearch", us);
 		if(ul != null) {
 			request.setAttribute("userList", ul);
 			
 			getServletContext().getRequestDispatcher("/WEB-INF/pages/users/userlist.jsp").forward(request, response);
 			
-			}
+			}*/
 		
 	}
 

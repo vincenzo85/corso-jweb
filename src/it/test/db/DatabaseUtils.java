@@ -1,12 +1,12 @@
 package it.test.db;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
-import it.esempi.dao.ConfigDb;
+
 
 
 
@@ -17,7 +17,7 @@ public class DatabaseUtils {
 	//private static ConfigPropertyLoader cfg =null;
 	private static DatabaseUtils _instance = null;
 	
-	private ConfigDb cfb=null;
+//	private ConfigDb cfb=null;
 	
 	//se utilizziamo quella classe per contenere dei dati particolari 
 	
@@ -44,12 +44,16 @@ public class DatabaseUtils {
 	 * 
 	 * */
 	
-	public void configDb(ConfigDb cdb) {
-		this.cfb = cdb;
+	private EntityManagerFactory em = null;
 	
+	
+	
+	
+	private DatabaseUtils() {
+		
+		em = Persistence.createEntityManagerFactory("jpaTest");
 	}
 	
-	private DatabaseUtils() {};
 	public static DatabaseUtils getInstance() {
 		if(_instance == null) {
 			_instance = new DatabaseUtils();
@@ -57,38 +61,11 @@ public class DatabaseUtils {
 		return _instance;
 	}
 	
-	
-	private void initMysqlDriver() {
-	
-		try {
-			
-//			cfg = new ConfigPropertyLoader();
-//			System.out.println(cfg.readProperty(cfg.DRIVER));
-			Class.forName(this.cfb.getMySqlDriver());
-			
-			
-			
-		} catch ( Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			/* nelle applicazioni desktop si, in quelle web mai metterlo */
-			System.exit(0);
-			
-		}
-		
+	public EntityManager getEntityManager() {
+		return em.createEntityManager();
 	}
-		
 	
 	
-	public Connection openMySqlConnection () throws SQLException {
 		
-		// sono a basso livello quindi faccio il throws
-		initMysqlDriver();
-		
-		return DriverManager.getConnection( this.cfb.getDatabaseUrl(), this.cfb.getDatabaseUsername(), this.cfb.getDatabasePassword());
-		
-		
-	};
-	
 
 }
